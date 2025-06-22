@@ -1,3 +1,4 @@
 node_modules
 dist/*
 !dist/manifest.json
+web-ext-artifacts
