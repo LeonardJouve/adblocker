@@ -1,8 +1,8 @@
-const handle = () => {
+document.addEventListener("loadedmetadata", (event) => {
     const videoContainer = document.getElementById("movie_player");
-    const videoPlayer = document.querySelector("video.video-stream") as HTMLVideoElement;
+    const videoPlayer = event.target;
 
-    if (!videoContainer || !videoPlayer) return;
+    if (!videoContainer || !videoPlayer || !(videoPlayer instanceof HTMLVideoElement)) return;
 
     const hasAd = videoContainer.classList.contains("ad-showing");
 
@@ -10,6 +10,5 @@ const handle = () => {
 
     videoPlayer.currentTime = videoPlayer.duration - 0.1;
     videoPlayer.play();
-};
+}, {capture: true});
 
-setInterval(handle, 150);
